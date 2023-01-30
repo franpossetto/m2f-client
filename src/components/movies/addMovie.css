@@ -1,0 +1,26 @@
+.fiction-title {
+    padding-top: 10px;
+    font-size: 16px;
+}
+.fiction-desc {
+    font-size: 10px;
+    color: grey
+}
+
+img {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+
+}
+
+.selected-title:hover {
+    background-color: rgb(243, 243, 243);
+    /* color: #fff; */
+}
+
+.scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+}
+
