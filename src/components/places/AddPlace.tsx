@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { PlaceAutoComplete } from "./PlaceAutoComplete";
+import { SearchPlace } from "./SearchPlace";
 import Map2FictionService from "../../services/Map2FictonService";
+import TMDBService from "../../services/TMDBService";
 
 export const AddPlace = () => {
   const [movieChecked, setMovieChecked] = useState<boolean>(true);
@@ -19,7 +20,6 @@ export const AddPlace = () => {
       setTvShowChecked(true);
       setBookChecked(false);
     }
-
     if (selectedOption == "book") {
       setMovieChecked(false);
       setTvShowChecked(false);
@@ -124,7 +124,7 @@ export const AddPlace = () => {
         <div className="row">
           <div className="col">
             <div className="mb-3">
-              <PlaceAutoComplete setPlace={setPlace} />
+              <SearchPlace setPlace={setPlace} />
             </div>
           </div>
         </div>

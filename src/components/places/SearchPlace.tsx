@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
-export const PlaceAutoComplete = ({ setPlace }: any) => {
+export const SearchPlace = ({ setPlace }: any) => {
   const loader = new Loader({
     apiKey: import.meta.env.VITE_GMAPS_API_KEY,
     version: "weekly",
