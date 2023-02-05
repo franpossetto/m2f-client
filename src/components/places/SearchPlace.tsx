@@ -1,10 +1,5 @@
-import React, { useRef, useState } from "react";
-import {
-  StandaloneSearchBox,
-  LoadScript,
-  GoogleMap,
-  useGoogleMap,
-} from "@react-google-maps/api";
+import React, { useEffect, useRef, useState } from "react";
+import { Loader } from "@googlemaps/js-api-loader";
 
 export const SearchPlace = ({ setPlace }: any) => {
   const loader = new Loader({
@@ -14,7 +9,7 @@ export const SearchPlace = ({ setPlace }: any) => {
   });
 
   const options = {
-    fields: ["formatted_address", "geometry", "name"],
+    // fields: ["formatted_address", "geometry", "name", "place_id"],
     strictBounds: false,
     types: ["street_address"],
   };
@@ -43,6 +38,7 @@ export const SearchPlace = ({ setPlace }: any) => {
 
   const [autoCompleteValue, setAutoCompleteValue] = useState("");
   const inputRef: any = useRef();
+
   const handlePlaceChanged = () => {
     const place = autocomplete.getPlace();
 
@@ -59,24 +55,14 @@ export const SearchPlace = ({ setPlace }: any) => {
       console.log(inputRef.current.name);
     }
   };
-  console.log(import.meta.env.GMAPS_API_KEY);
   return (
     <>
-      <LoadScript
-        googleMapsApiKey={import.meta.env.VITE_GMAPS_API_KEY || ""}
-        libraries={["places"]}
-      >
-        <StandaloneSearchBox
-          onLoad={(ref) => (inputRef.current = ref)}
-          onPlacesChanged={handlePlaceChanged}
-        >
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter Location"
-          />
-        </StandaloneSearchBox>
-      </LoadScript>
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Enter Location"
+        ref={(ref) => (inputRef.current = ref)}
+      />
     </>
   );
 };

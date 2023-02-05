@@ -109,7 +109,18 @@ export const AddMovie = () => {
     setSelected(false);
   }, [close, mediaType]);
 
-  console.log(seasons);
+  function formatTime(minutes: number) {
+    const hours = Math.floor(minutes / 60);
+    const minutesLeft = minutes % 60;
+    return `${hours}:${minutesLeft < 10 ? "0" : ""}${minutesLeft}`;
+  }
+
+  const [min, setMin] = useState(0);
+
+  const handleTime = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setMin(Number(event.target.value));
+  };
+
   return (
     <>
       <div className="container" style={{ width: "30%", paddingTop: "30px" }}>
@@ -246,6 +257,21 @@ export const AddMovie = () => {
             <br />
           </>
         )}
+
+        <label htmlFor="customRange1" className="form-label">
+          Example range
+        </label>
+        <input
+          type="range"
+          className="form-range"
+          id="customRange1"
+          min="0"
+          max="1440"
+          step="1"
+          value={min}
+          onChange={handleTime}
+        />
+        <span className="form-range-value">{formatTime(min)}</span>
 
         <div className="row">
           <div className="col">
